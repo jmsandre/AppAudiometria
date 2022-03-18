@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    >
+    <View
+        android:background="#AAC8C6"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        app:layout_constraintTop_toTopOf="@id/nome_print"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/letra_inicial"
+        android:background="@drawable/inicial_backgroud"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:text="A"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/print_label_nome"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:hint="Nome "
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/letra_inicial"
+
+        />
+    <TextView
+        android:id="@+id/nome_print"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="name"
+        android:fontFamily="sans-serif-black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toEndOf="@id/print_label_nome"
+        app:layout_constraintTop_toTopOf="@id/print_label_nome"
+        app:layout_constraintBottom_toBottomOf="@id/print_label_nome"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/print_label_cpf"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
+        android:hint="CPF"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toEndOf="@id/letra_inicial"
+        app:layout_constraintTop_toBottomOf="@id/print_label_nome"
+        />
+    <TextView
+        android:id="@+id/cpf_print"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:hint="cpf"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toEndOf="@id/print_label_cpf"
+        app:layout_constraintTop_toTopOf="@id/print_label_cpf"
+        app:layout_constraintBottom_toBottomOf="@id/print_label_cpf"
+        android:paddingLeft="10dp"
+        />
+
+    <View
+        android:background="#AAC8C6"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cpf_print"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.TesteAudiometricoEsquerdoActivity">
+
+    <include
+        layout="@layout/appbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        layout="@layout/background"
+        android:layout_marginTop="-4dp"
+        android:layout_marginBottom="-4dp"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/text_color"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView_frequencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="24dp"
+        android:textSize="20sp"
+        android:text="Frequência"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_titulo" />
+
+    <TextView
+        android:id="@+id/valor_frequencia"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:hint="fr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_frequencia" />
+
+    <Button
+        android:id="@+id/frequenciaAnterior"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:background="@drawable/button"
+        android:text="-"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/valor_frequencia"
+        app:layout_constraintTop_toTopOf="@id/valor_frequencia"
+        app:layout_constraintBottom_toBottomOf="@id/valor_frequencia"/>
+
+    <Button
+        android:id="@+id/frequenciaSeguinte"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:background="@drawable/button"
+        android:text="+"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/valor_frequencia"
+        app:layout_constraintBottom_toBottomOf="@id/valor_frequencia"
+        app:layout_constraintStart_toEndOf="@id/valor_frequencia"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView_Intensidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textSize="20sp"
+        android:text="Intensidade"
+        app:layout_constraintStart_toStartOf="@id/textView_frequencia"
+        app:layout_constraintTop_toBottomOf="@+id/valor_frequencia" />
+
+    <TextView
+        android:id="@+id/valor_intensidade"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:hint="amp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_Intensidade" />
+
+    <Button
+        android:id="@+id/diminuirIntensidade"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:background="@drawable/button"
+        android:text="-"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/valor_intensidade"
+        app:layout_constraintTop_toTopOf="@id/valor_intensidade"
+        app:layout_constraintBottom_toBottomOf="@id/valor_intensidade"/>
+
+    <Button
+        android:id="@+id/aumentarIntensidade"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:background="@drawable/button"
+        android:text="+"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toTopOf="@id/valor_intensidade"
+        app:layout_constraintBottom_toBottomOf="@id/valor_intensidade"
+        app:layout_constraintStart_toEndOf="@id/valor_intensidade"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_Intensidade"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/cancelar"
+        android:background="@drawable/button"
+        app:backgroundTint="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/play"
+        app:layout_constraintTop_toBottomOf="@id/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+    <Button
+        android:id="@+id/avançar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        app:backgroundTint="@null"
+        android:text="Avançar"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+/>
+</androidx.constraintlayout.widget.ConstraintLayout>

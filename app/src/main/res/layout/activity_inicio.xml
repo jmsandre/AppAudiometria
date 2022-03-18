@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.InicioActivity"
+    >
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginBottom="-4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"/>
+
+    <Button
+        android:id="@+id/button_teste_rapido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bamboo"
+        android:layout_marginBottom="128dp"
+        android:layout_marginLeft="32dp"
+        android:text="Teste Rápido"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@id/icone_fone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_cadastrar_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bamboo"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Testar e salvar Usuário"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@id/button_teste_rapido"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_ver_usuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bamboo"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Ver Usuários salvos"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@id/button_cadastrar_usuario"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/icone_fone"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:srcCompat="@drawable/foneicon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

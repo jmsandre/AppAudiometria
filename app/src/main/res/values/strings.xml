@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Audiometria3.0</string>
+
+    <string name="titulo_activity_esquerda">Ouvido Esquerdo</string>
+    <string name="titulo_activity_direita">Ouvido Direito</string>
+    <string name="texto_frequencia">Frequência</string>
+    <string name="texto_intensidade">Intensidade</string>
+
+    <string name="botao_teste_rapido">Exame Rápido</string>
+    <string name="botao_teste_padrao">Exame Padrão</string>
+    <string name="botao_ver_usuarios">Ver Usuários salvos</string>
+
+    <string name="botao_avançar">Avançar</string>
+    <string name="botao_voltar">Voltar</string>
+
+    <string name="botao_concluir">Concluir</string>
+    <string name="botao_cancelar">Cancelar</string>
+    <string name="botao_salvar_imagem">Salvar na Galeria</string>
+
+    <string name="mensagem_inicial">Bem vindo a Audiometria</string>
+    <string name="dica_1"></string>
+    <string name="dica_2"></string>
+    <string name="extra_acessar">acessar_usuario</string>
+    <string name="resultado">resultado</string>
+</resources>
