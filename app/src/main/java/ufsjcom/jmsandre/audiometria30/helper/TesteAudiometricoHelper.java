@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,7 +21,6 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,7 @@ public class TesteAudiometricoHelper {
     private Button aumentar_intensidade;
     private Button diminuir_intensidade;
 
-    private ImageView play;
+    private ImageButton play;
     private Button avancar;
     private Button cancelar;
 
@@ -199,8 +199,22 @@ public class TesteAudiometricoHelper {
             play.setOnClickListener((view) -> {
                 sound.setFrequency(controller.frequencias.getValorAtual());
                 sound.setIntensity(controller.getValorIntensidade());
+
+                play.setActivated(true);
                 sound.setAudio();
-                sound.playSound();
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        play.setActivated(false);
+                    }
+                }, 1000*sound.getTime());
+
+                (new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        sound.playSound();
+                    }
+                })).start();
             });
 
             cancelar.setOnClickListener((view) -> {
@@ -323,7 +337,8 @@ public class TesteAudiometricoHelper {
             AudiometriaDatabase bd = new AudiometriaDatabase(activity);
             bd.getWritableDatabase();
             bd.inserir(usuario);
-            Toast.makeText(activity, "Usuario Salvo", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(activity, "Usuario Salvo"+usuario.getNome()+" - "+usuario.getCpf(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -2,11 +2,6 @@ package ufsjcom.jmsandre.audiometria30;
 
 import android.app.Application;
 
-import java.util.List;
-
-import ufsjcom.jmsandre.audiometria30.database.AudiometriaDatabase;
-import ufsjcom.jmsandre.audiometria30.model.Usuario;
-
 public class AudiometriaApplication extends Application {
 
     @Override

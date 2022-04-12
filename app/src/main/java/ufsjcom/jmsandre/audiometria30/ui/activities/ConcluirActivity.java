@@ -20,8 +20,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -64,19 +62,11 @@ public class ConcluirActivity extends AppCompatActivity {
 
         viewHelper.setDisplays();
         viewHelper.setButtons();
-        viewHelper.setTitulo("Resultado");
         viewHelper.setChartSettings();
-        CheckAcesso();
 
         viewHelper.getPDFButton().setOnClickListener(gerar->{
             gerarBitMap();
         });
-    }
-
-    private void CheckAcesso() {
-        if(this.acessarUsuario == true){
-            viewHelper.setTitulo("Audiometria");
-        }
     }
 
     private void getUsuario(){
@@ -108,9 +98,8 @@ public class ConcluirActivity extends AppCompatActivity {
     }
 
     public void gerarBitMap(){
-        //setContentView(R.layout.print_format);
+
         View printview = this.getWindow().getDecorView().getRootView();
-        //View printview = viewHelper.getPrintView();
         Bitmap bmap = generateBitMapFromView(printview);
         if(bmap != null){
             saveBmap(bmap);

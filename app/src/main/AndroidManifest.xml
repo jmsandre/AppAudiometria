@@ -4,32 +4,33 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
-        android:name=".AudiometriaApplication"
+        android:name="ufsjcom.jmsandre.audiometria30.AudiometriaApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_fone"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_fone"
         android:supportsRtl="true"
         android:theme="@style/Theme.Audiometria30">
         <activity
-            android:name=".ui.activities.ConcluirActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.ConcluirActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.TesteAudiometricoEsquerdoActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.TesteAudiometricoEsquerdoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.TesteAudiometricoDireitoActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.TesteAudiometricoDireitoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.CadastrarActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.CadastrarActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ListaUsuariosActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.ListaUsuariosActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.InicioActivity"
+            android:name="ufsjcom.jmsandre.audiometria30.ui.activities.InicioActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

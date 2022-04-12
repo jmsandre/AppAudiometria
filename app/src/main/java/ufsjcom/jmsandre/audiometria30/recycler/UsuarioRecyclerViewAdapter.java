@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
 import ufsjcom.jmsandre.audiometria30.R;
 import ufsjcom.jmsandre.audiometria30.model.Usuario;
 
@@ -17,17 +18,23 @@ public class UsuarioRecyclerViewAdapter
 
     private final List<Usuario> usuarios;
     private OnUserClickListener onUserClickListener;
+    private OnDeleteClickListener onDeleteClickListener;
 
-    public UsuarioRecyclerViewAdapter(List<Usuario> usuarios, OnUserClickListener onUserClickListener){
+    public UsuarioRecyclerViewAdapter(
+            List<Usuario> usuarios,
+            OnUserClickListener onUserClickListener,
+            OnDeleteClickListener onDeleteClickListener){
+
         this.usuarios = usuarios;
         this.onUserClickListener = onUserClickListener;
+        this.onDeleteClickListener = onDeleteClickListener;
     }
 
     @NonNull
     @Override
     public UsuarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View viewCriada = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new UsuarioViewHolder(viewCriada, onUserClickListener);
+        return new UsuarioViewHolder(viewCriada, onUserClickListener, onDeleteClickListener);
     }
 
     @Override
@@ -47,14 +54,25 @@ public class UsuarioRecyclerViewAdapter
         private final TextView inicial;
         private final TextView nome;
         private final TextView cpf;
-        OnUserClickListener onUserClickListener;
+        private final TextView deletar;
 
-        public UsuarioViewHolder(@NonNull View itemView, OnUserClickListener onUserClickListener) {
+        OnUserClickListener onUserClickListener;
+        OnDeleteClickListener onDeleteClickListener;
+
+        public UsuarioViewHolder(@NonNull View itemView, OnUserClickListener onUserClickListener, OnDeleteClickListener onDeleteClickListener) {
             super(itemView);
+
             inicial = itemView.findViewById(R.id.letra_inicial);
-            nome = itemView.findViewById(R.id.nome_print);
-            cpf = itemView.findViewById(R.id.cpf_print);
+            nome = itemView.findViewById(R.id.nome);
+            cpf = itemView.findViewById(R.id.cpf);
+            deletar = itemView.findViewById(R.id.button_delete);
+
             this.onUserClickListener = onUserClickListener;
+            this.onDeleteClickListener = onDeleteClickListener;
+            deletar.setOnClickListener(v->{
+                this.onDeleteClickListener.OnDeleteClick(getAdapterPosition());
+            });
+
             itemView.setOnClickListener(this);
         }
 
@@ -74,4 +92,9 @@ public class UsuarioRecyclerViewAdapter
     public interface OnUserClickListener{
         void OnUserClick(int position);
     }
+
+    public interface OnDeleteClickListener{
+        void OnDeleteClick(int position);
+    }
+
 }

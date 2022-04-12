@@ -1,14 +1,13 @@
 package ufsjcom.jmsandre.audiometria30.ui.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +40,6 @@ public class ListaUsuariosActivity extends AppCompatActivity
         db = new AudiometriaDatabase(this);
         linkarViews();
         setListeners();
-
     }
 
     private void setListeners() {
@@ -50,7 +48,8 @@ public class ListaUsuariosActivity extends AppCompatActivity
             usuarios = db.pesquisa(nome);
             lista.setAdapter(new UsuarioRecyclerViewAdapter(
                     usuarios,
-                    this::OnUserClick
+                    this::OnUserClick,
+                    this::OnDeleteClick
             ));
         });
     }
@@ -67,19 +66,43 @@ public class ListaUsuariosActivity extends AppCompatActivity
         usuarios = db.todos();
         lista.setAdapter(new UsuarioRecyclerViewAdapter(
                 usuarios,
-                this::OnUserClick
+                this::OnUserClick,
+                this::OnDeleteClick
         ));
-
     }
 
     @Override
     public void OnUserClick(int position) {
         Usuario usuario = usuarios.get(position);
+
         Boolean acessarUsuario = true;
         Intent intent = new Intent(this, ConcluirActivity.class);
         intent.putExtra("usuario", usuario);
         intent.putExtra("acessarUsuario", acessarUsuario);
 
         startActivity(intent);
+
+    }
+
+    public void OnDeleteClick(int position){
+        Usuario usuario = usuarios.get(position);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Deletar Usuario "+usuario.getNome())
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.deletar(usuario);
+                        onResume();
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+
     }
 }

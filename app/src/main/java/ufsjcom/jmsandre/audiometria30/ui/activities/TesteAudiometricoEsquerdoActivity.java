@@ -7,11 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
-
-import org.w3c.dom.Text;
 
 import ufsjcom.jmsandre.audiometria30.R;
 import ufsjcom.jmsandre.audiometria30.model.Usuario;

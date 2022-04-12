@@ -2,7 +2,6 @@ package ufsjcom.jmsandre.audiometria30.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.MultiAutoCompleteTextView;
 
 import java.util.StringTokenizer;
 

@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -20,13 +19,22 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
     private static final String DB_NAME = "audiometria.db";
     private static final int VERSION = 1;
 
-    final int COLUNA_CPF = 0;
-    final int COLUNA_NOME = 1;
+    final int COLUNA_NOME = 0;
+    final int COLUNA_CPF = 1;
     final int COLUNA_VALORES_ESQUERDA = 2;
     final int COLUNA_VALORES_DIREITA = 3;
 
+    AudiometriaDatabase instance;
+
     public AudiometriaDatabase(@Nullable Context context) {
         super(context, DB_NAME, null, VERSION);
+    }
+
+    public AudiometriaDatabase getInstance(Context context){
+        if(this.instance == null)
+            instance = new AudiometriaDatabase(context);
+
+        return this.instance;
     }
 
     @Override
@@ -59,7 +67,7 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
     public void deletar(Usuario usuario){
         SQLiteDatabase db = getReadableDatabase();
 
-        db.delete("usuario", "cpf = "+usuario.getCpf(), null);
+        db.delete("usuario", "cpf = '"+usuario.getCpf()+"'", null);
     }
 
     public void clear(){
@@ -81,6 +89,8 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
         }
 
         cursor.moveToFirst();
+        if(cursor.getCount() == 0)
+            return usuarios;
 
         do{
             Usuario temp = new Usuario();
