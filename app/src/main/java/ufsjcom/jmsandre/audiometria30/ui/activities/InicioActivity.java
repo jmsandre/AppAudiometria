@@ -3,8 +3,10 @@ package ufsjcom.jmsandre.audiometria30.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,16 +21,16 @@ public class InicioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inicio);
 
         setButtons();
-        AudiometriaDatabase db = new AudiometriaDatabase(this);
-        db.getReadableDatabase();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("Teste Rápido");
         menu.add("Testar e salvar");
+        menu.add("Limpar Dados");
         return super.onCreateOptionsMenu(menu);
     }
+
 
     private void setButtons(){
         final Button teste_rapido = findViewById(R.id.button_teste_rapido);
@@ -42,7 +44,6 @@ public class InicioActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), TesteAudiometricoEsquerdoActivity.class);
             startActivity(intent);
         });
-
 
         cadastrar_usuario.setOnClickListener((view)->{
             Intent intent = new Intent(getApplicationContext(), CadastrarActivity.class);

@@ -7,14 +7,14 @@ import java.util.StringTokenizer;
 
 public class Usuario implements Parcelable {
 
+    private int id;
     private String cpf;
-
     private String nome;
 
     private int valoresEsquerda[] = new int[10];
     private int valoresDireita[] = new int[10];
 
-    public Usuario(String nome, String cpf){
+    public Usuario(String cpf, String nome){
         this.nome = nome;
         this.cpf = cpf;
         setValoresPadrao();
@@ -141,5 +141,9 @@ public class Usuario implements Parcelable {
         for(int i = 0; i < 10; i++){
             valoresDireita[i] = Integer.parseInt(tokenizer.nextToken());
         }
+    }
+
+    public int getId() {
+        return this.id;
     }
 }

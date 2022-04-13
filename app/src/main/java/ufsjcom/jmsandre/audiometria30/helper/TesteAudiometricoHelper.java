@@ -338,7 +338,7 @@ public class TesteAudiometricoHelper {
             bd.getWritableDatabase();
             bd.inserir(usuario);
 
-            Toast.makeText(activity, "Usuario Salvo"+usuario.getNome()+" - "+usuario.getCpf(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Usuario Salvo", Toast.LENGTH_SHORT).show();
         }
     }
 

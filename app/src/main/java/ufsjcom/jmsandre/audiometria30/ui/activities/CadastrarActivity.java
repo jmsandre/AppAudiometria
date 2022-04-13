@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import ufsjcom.jmsandre.audiometria30.R;
+import ufsjcom.jmsandre.audiometria30.database.AudiometriaDatabase;
 import ufsjcom.jmsandre.audiometria30.model.Usuario;
 
 public class CadastrarActivity extends AppCompatActivity {
@@ -31,8 +32,8 @@ public class CadastrarActivity extends AppCompatActivity {
 
         button_iniciar.setOnClickListener((view)->{
             Usuario usuario = new Usuario(
-                    editText_nome.getText().toString(),
-                    editText_cpf.getText().toString()
+                    editText_cpf.getText().toString(),
+                    editText_nome.getText().toString()
             );
             Intent intent = new Intent(getApplicationContext(), TesteAudiometricoEsquerdoActivity.class);
             intent.putExtra("usuario", usuario);

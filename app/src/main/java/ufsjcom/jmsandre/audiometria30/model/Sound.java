@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi;
 
 public class Sound {
     private final int samplerate;
-    private int t = 3;
+    private int t = 10;
     private int frequency;
     private int duration = 44100*t;
     private double intensity;

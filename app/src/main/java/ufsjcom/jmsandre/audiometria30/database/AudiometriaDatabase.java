@@ -19,8 +19,8 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
     private static final String DB_NAME = "audiometria.db";
     private static final int VERSION = 1;
 
-    final int COLUNA_NOME = 0;
-    final int COLUNA_CPF = 1;
+    final int COLUNA_CPF = 0;
+    final int COLUNA_NOME = 1;
     final int COLUNA_VALORES_ESQUERDA = 2;
     final int COLUNA_VALORES_DIREITA = 3;
 
@@ -40,8 +40,8 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE usuario(" +
-                "nome TEXT," +
                 "cpf TEXT PRIMARY KEY," +
+                "nome TEXT," +
                 "valoresEsquerda TEXT," +
                 "valoresDireita TEXT)");
     }
@@ -56,8 +56,8 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("nome", usuario.getNome());
         values.put("cpf", usuario.getCpf());
+        values.put("nome", usuario.getNome());
         values.put("valoresEsquerda", usuario.getStringValoresEsquerda());
         values.put("valoresDireita", usuario.getStringValoresDireita());
 
@@ -74,6 +74,13 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         db.execSQL("delete from usuario");
+    }
+
+    public void drop(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        db.execSQL("drop table usuario");
+        onCreate(db);
     }
 
     public List<Usuario> todos(){
@@ -95,8 +102,8 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
         do{
             Usuario temp = new Usuario();
 
-            temp.setNome(cursor.getString(COLUNA_NOME));
             temp.setCpf(cursor.getString(COLUNA_CPF));
+            temp.setNome(cursor.getString(COLUNA_NOME));
             temp.setValoresEsquerda(cursor.getString(COLUNA_VALORES_ESQUERDA));
             temp.setValoresDireita(cursor.getString(COLUNA_VALORES_DIREITA));
 
@@ -125,12 +132,13 @@ public class AudiometriaDatabase extends SQLiteOpenHelper {
         do{
             Usuario temp = new Usuario();
 
-            temp.setNome(cursor.getString(COLUNA_NOME));
             temp.setCpf(cursor.getString(COLUNA_CPF));
+            temp.setNome(cursor.getString(COLUNA_NOME));
             temp.setValoresEsquerda(cursor.getString(COLUNA_VALORES_ESQUERDA));
             temp.setValoresDireita(cursor.getString(COLUNA_VALORES_DIREITA));
 
             usuarios.add(temp);
+
         }while(cursor.moveToNext());
 
         return usuarios;
